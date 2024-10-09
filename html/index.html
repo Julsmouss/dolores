@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <title>Dolores Dólares</title>
+    <link rel="stylesheet" href="styles.css">
+   
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="img/Imagen 1.png" alt="Logo" class="logo-icon">
+            <h1>Dolores Dólares</h1>
+        </div>
+    </header>
+
+    <!-- Sección de Filtros -->
+    <section class="filters">
+        <h2>Filtrar productos</h2>
+        <form id="filterForm">
+            <label for="category">Categoría:</label>
+            <select id="category" name="category">
+                <option value="todos">Todos</option>
+                <option value="Crédito">Crédito</option>
+                <option value="Ahorro">Ahorro</option>
+            </select>
+
+            <label for="bank">Banco:</label>
+            <select id="bank" name="bank">
+                <option value="todos">Todos los bancos</option>
+                <!-- Las opciones de bancos se llenarán dinámicamente con JavaScript -->
+            </select>
+
+            <label for="interestRate">Tasa de interés:</label>
+            <input type="number" id="interestRate" name="interestRate" min="0" step="0.01">
+
+            <button type="submit">Aplicar Filtros</button>
+        </form>
+    </section>
+
+    <!-- Sección de Productos Bancarios -->
+    <section class="products">
+        <h2>Productos disponibles</h2>
+        <div class="product-list">
+            <!-- Aquí se llenará dinámicamente con JavaScript -->
+        </div>
+    </section>
+
+    <!-- Sección de Comparación -->
+    <section class="comparison">
+        <h2>Comparar productos</h2>
+        <div class="comparison-table">
+            <!-- Aquí se mostrarán las comparaciones de productos -->
+        </div>
+        <button id="compareBtn">Comparar Seleccionados</button> <!-- Botón para iniciar la comparación -->
+    </section>
+
+    <!-- Sección de Reportar Fraudes -->
+    <section class="report-fraud">
+        <h2>Reportar Fraudes</h2>
+        <div class="fraud-form">
+            <label for="fraud-bank">Selecciona tu banco para reportar fraude:</label>
+            <select id="fraud-bank" onchange="showBankFraudInfo()">
+                <option value="">-- Selecciona un banco --</option>
+                <!-- Opciones de bancos se llenarán dinámicamente con JavaScript -->
+            </select>
+        </div>
+
+        <div id="fraud-info" class="fraud-info">
+            <h3>Información de Contacto</h3>
+            <p id="fraud-contact-number"></p>
+            <p id="fraud-branches"></p>
+            <p id="fraud-links"></p>
+            <p id="fraud-emails"></p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; Dolores Dólares</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

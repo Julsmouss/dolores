@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Cambiada a una fuente juvenil */
+    margin: 0;
+    padding: 0;
+    background-color: #F8E3B8; /* Fondo amarillo suave */
+    color: #4A4E69; /* Texto gris oscuro */
+}
+
+header {
+    background-color: #FF9A00; /* Naranja brillante para el fondo */
+    color: #FFFFFF; /* Texto blanco */
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    font-size: 50px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon {
+    width: 200px;
+    height: 200px;
+}
+
+.filters {
+    background-color: #FFFFFF; /* Fondo blanco para los filtros */
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.products, .comparison {
+    background-color: #FFFFFF; /* Fondo blanco para productos y comparaciones */
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    border-bottom: 3px solid #9A8BFF; /* Línea lavanda bajo títulos */
+    padding-bottom: 10px;
+    color: #4A4E69; /* Texto gris oscuro */
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-item {
+    background-color: #F8E3B8; /* Fondo amarillo suave para productos */
+    border-radius: 10px;
+    padding: 15px;
+    width: calc(33.33% - 20px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.product-item:hover {
+    transform: scale(1.05); /* Mayor crecimiento al hacer hover */
+    background-color: #FF9A00; /* Cambia el fondo a naranja en hover */
+    color: #FFFFFF; /* Texto blanco en hover */
+}
+
+.product-image {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.product-item h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #4A4E69; /* Texto gris oscuro */
+}
+
+.product-item p {
+    margin: 5px 0;
+}
+
+.compare-btn {
+    background-color: #FF9A00; /* Botón naranja brillante */
+    color: #FFFFFF; /* Texto blanco en el botón */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.compare-btn:hover {
+    background-color: #E68A00; /* Hover en un naranja más oscuro */
+}
+
+.comparison-table {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.comparison-row {
+    background-color: #F8E3B8; /* Fondo amarillo suave */
+    border-radius: 10px;
+    padding: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #4A4E69; /* Fondo gris oscuro */
+    color: #FFFFFF; /* Texto blanco */
+}
+
+.filters select,
+.filters input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #FF9A00; /* Fondo naranja para los botones */
+    color: #FFFFFF; /* Texto blanco */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #E68A00; /* Hover en naranja oscuro */
+}
