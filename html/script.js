@@ -296,5 +296,5 @@ document.addEventListener("DOMContentLoaded", () => {
     // Añadir evento para mostrar la información del banco al seleccionar
     fraudBankSelect.addEventListener("change", showBankFraudInfo);
 
-    // Resto de funciones (displayProducts, populateBanks, etc.) se mantiene igual
+   
 });
