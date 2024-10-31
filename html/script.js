@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         productsToDisplay.forEach(product => {
             const productItem = document.createElement("div");
             productItem.className = "product-item";
-
+    
             productItem.innerHTML = `
                 <img src="${product.imagen}" alt="${product.nombre}" class="product-image">
                 <h3>${product.nombre}</h3>
@@ -65,11 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p><strong>Cashback:</strong> ${product.cashback}</p>
                 <button class="compare-btn" data-product='${JSON.stringify(product)}'>Comparar</button>
             `;
-
+    
             productList.appendChild(productItem);
         });
     }
-
+    
     // Función para llenar el select de bancos para productos
     function populateBanks(products) {
         const uniqueBanks = [...new Set(products.map(product => product.banco))];
@@ -125,17 +125,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Manejar la comparación de productos seleccionados
-    compareBtn.addEventListener("click", () => {
-        comparisonTable.innerHTML = ""; // Limpiar la tabla de comparación
-        if (selectedProducts.length === 0) {
-            comparisonTable.innerHTML = "<p>No hay productos seleccionados para comparar.</p>";
-            return;
-        }
+  // Manejar la comparación de productos seleccionados
+compareBtn.addEventListener("click", () => {
+    comparisonTable.innerHTML = ""; // Limpiar la tabla de comparación
+    if (selectedProducts.length === 0) {
+        comparisonTable.innerHTML = "<p>No hay productos seleccionados para comparar.</p>";
+        return;
+    }
 
-        selectedProducts.forEach(product => {
-            const row = document.createElement("div");
-            row.className = "comparison-row";
-            row.innerHTML = `
+    selectedProducts.forEach(product => {
+        const row = document.createElement("div");
+        row.className = "comparison-row";
+        row.innerHTML = `
+            <div class="comparison-image">
+                <img src="${product.imagen}" alt="${product.nombre}" class="comparison-product-image">
+            </div>
+            <div class="comparison-details">
                 <h3>${product.nombre}</h3>
                 <p><strong>Banco:</strong> ${product.banco}</p>
                 <p><strong>Categoría:</strong> ${product.categoria}</p>
@@ -143,10 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p><strong>Beneficios:</strong> ${product.beneficios}</p>
                 <p><strong>Requisitos:</strong> ${product.requisitos}</p>
                 <p><strong>Cashback:</strong> ${product.cashback}</p>
-            `;
-            comparisonTable.appendChild(row);
-        });
+            </div>
+        `;
+        comparisonTable.appendChild(row);
     });
+});
 
     // Función para mostrar información del banco seleccionado para reportar fraude
     function showBankFraudInfo() {
@@ -296,5 +302,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Añadir evento para mostrar la información del banco al seleccionar
     fraudBankSelect.addEventListener("change", showBankFraudInfo);
 
-   
+    // Resto de funciones (displayProducts, populateBanks, etc.) se mantiene igual
 });
+function showBankFraudInfo() {
+    const fraudInfo = document.getElementById('fraud-info');
+    const fraudBank = document.getElementById('fraud-bank').value;
+    fraudInfo.style.display = fraudBank ? 'block' : 'none';
+}

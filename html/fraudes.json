@@ -1,18 +1,32 @@
 [
     {
         "BancoA": {
-            "nombre": "Banco A",
-            "contact": "123-456-7890",
-            "branches": "Sucursal 1, Sucursal 2",
-            "links": "www.bancoA.com/autogestion",
-            "emails": "contacto@bancoA.com"
+            "nombre": "Banco de bogota",
+            "contact": "Bogotá 601 382 00 00 Nivel Nacional :01 8000 518 877",
+            "branches": "EDS BIOMAX PRIMAVERA I KR 69 R 75-65 Sucursal 2",
+            "links": "https://www.bancodebogota.com/atencion-al-cliente/servilineas",
+            "emails": "NA"
         },
         "BancoB": {
-            "nombre": "Banco B",
-            "contact": "098-765-4321",
-            "branches": "Sucursal 3, Sucursal 4",
-            "links": "www.bancoB.com/autogestion",
-            "emails": "contacto@bancoB.com"
+            "nombre": "Davivienda",
+            "contact": "338-3838 en Bogotá",
+            "branches": "Carrera 7 # 71 – 52 Torre B Piso 16",
+            "links": " www.davivienda.com ",
+            "emails": "Na"
+        },
+        "BancoC": {
+            "nombre": "BBVA",
+            "contact": "Línea BBVA 01 8000 912 227",
+            "branches": "850.0 metros · Ak 68 # 66 - 62",
+            "links": " https://vdp.bbva.com/p/Bienvenido",
+            "emails": "Na"
+        },
+        "BancoD": {
+            "nombre": "Scotiabank Colpatria",
+            "contact": "atención al cliente al 01 8000 93 2933",
+            "branches": "850.0 metros · Ak 68 # 66 - 62",
+            "links": "https://www.scotiabankcolpatria.com/personas/seguros/fraude",
+            "emails": "incidentesseguridad@colpatria.com"
         }
     }
 ]
