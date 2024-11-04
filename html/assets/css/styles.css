@@ -48,7 +48,7 @@ header {
 }
 
 h2 {
-    border-bottom: 3px solid #9A8BFF; /* Línea lavanda bajo títulos */
+    border-bottom: 3px solid #9A8BFF; /* Linea lavanda bajo titulos */
     padding-bottom: 10px;
     color: #4A4E69; /* Texto gris oscuro */
 }
@@ -99,8 +99,8 @@ h2 {
 }
 
 .compare-btn {
-    background-color: #FF9A00; /* Botón naranja brillante */
-    color: #FFFFFF; /* Texto blanco en el botón */
+    background-color: #FF9A00; /* Boton naranja brillante */
+    color: #FFFFFF; /* Texto blanco en el boton */
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -109,7 +109,7 @@ h2 {
 }
 
 .compare-btn:hover {
-    background-color: #E68A00; /* Hover en un naranja más oscuro */
+    background-color: #E68A00; /* Hover en un naranja mas oscuro */
 }
 
 .comparison-table {
@@ -140,7 +140,7 @@ h2 {
     background-color: #FF9A00; /* Cambia a naranja en hover */
     color: #FFFFFF; /* Texto blanco en hover */
 }
-/* Imagen de Producto en Comparación */
+/* Imagen de Producto en Comparacion */
 .comparison-row img {
     max-width: 100%;
     border-radius: 5px;
@@ -148,7 +148,7 @@ h2 {
     object-fit: cover;
 }
 
-/* Títulos y Texto en Comparación */
+/* Titulos y Texto en Comparacion */
 .comparison-row h3 {
     font-size: 1.2em;
     margin: 10px 0;
