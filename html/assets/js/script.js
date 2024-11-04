@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
     const productList = document.querySelector(".product-list");
-    const filterForm = document.querySelector("#filterForm");
-    const bankSelect = document.querySelector("#bank");
+    const filterForm = document.getElementById("filterForm");
+    const bankSelect = document.getElementById("bank");
     const comparisonTable = document.querySelector(".comparison-table");
-    const compareBtn = document.querySelector("#compareBtn");
+    const compareBtn = document.getElementById("compareBtn");
     const fraudList = document.querySelector(".fraud-list"); // Nueva referencia para la lista de fraudes
-    const fraudBankSelect = document.querySelector("#fraud-bank"); // Select para bancos de fraudes
+    const fraudBankSelect = document.getElementById("fraud-bank"); // Select para bancos de fraudes
     let products = [];
     let selectedProducts = []; // Array para almacenar los productos seleccionados para comparar
     let banks = {}; // Almacena los bancos para acceder más tarde
 
     // Cargar productos desde api.json
-    fetch("assets/json/api.json")
+    fetch("api.json")
         .then((response) => {
             if (!response.ok) {
                 throw new Error("No se pudieron cargar los productos");
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     // Cargar información de fraudes desde fraudes.json
-    fetch("assets/json/fraudes.json")
+    fetch("fraudes.json")
         .then((response) => {
             if (!response.ok) {
                 throw new Error("No se pudieron cargar los fraudes");
@@ -168,7 +168,7 @@ compareBtn.addEventListener("click", () => {
         }
 
         // Buscar la información del banco en el archivo fraudes.json
-        fetch("assets/json/fraudes.json")
+        fetch("fraudes.json")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("No se pudo cargar la información de fraudes");
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let fraudData; // Almacena los datos de fraudes
 
     // Cargar productos desde api.json
-    fetch("assets/json/api.json")
+    fetch("api.json")
         .then((response) => {
             // Verifica si la respuesta es exitosa
             if (!response.ok) {
@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     // Cargar información de fraudes desde fraudes.json
-    fetch("assets/json/fraudes.json")
+    fetch("fraudes.json")
         .then((response) => {
             // Verifica si la respuesta es exitosa
             if (!response.ok) {
