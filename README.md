@@ -49,4 +49,10 @@
 -  Pablo Zapata Gómez  
 
 
+### BASE DE DATOS NORMALIZADA
+![image](https://github.com/user-attachments/assets/9536378a-ebf3-4606-a0ee-3aeeed1a361c)
+
+
+
+
 
