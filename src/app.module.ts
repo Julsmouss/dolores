@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { BanksController } from './banks/banks.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BanksService } from './banks/banks.service';
@@ -19,7 +17,7 @@ import { Bank } from './banks/entities/bank.entity';
     }),
     TypeOrmModule.forFeature([Bank]),
   ],
-  controllers: [AppController, BanksController],
-  providers: [AppService, BanksService],
+  controllers: [BanksController],
+  providers: [BanksService],
 })
 export class AppModule {}
