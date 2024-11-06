@@ -45,7 +45,7 @@
 - Juliana Gomez
 - Camila Burgos
 - Daniela Zambrano
-- Edelmira Zambrano
+- Jenny Zambrano
 -  Pablo Zapata Gómez  
 
 
