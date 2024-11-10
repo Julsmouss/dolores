@@ -1,7 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { FinancialProductEntity } from "src/financial-products/entities/financial-product.entity";
 
-@Entity()
-export class Bank {
+@Entity({name: 'banks'})
+export class BankEntity {
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -20,4 +21,10 @@ export class Bank {
 
     @Column()
     email: string;
+
+    @OneToMany(
+        () => FinancialProductEntity,
+        (financialProducts : FinancialProductEntity) => financialProducts.bank
+    )
+    financialProducts: FinancialProductEntity[];
 }

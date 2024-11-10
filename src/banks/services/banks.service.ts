@@ -1,27 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Bank } from '../entities/bank.entity';
+import { BankEntity } from '../entities/bank.entity';
 import { CreateBankDto } from '../dto/create-bank-dto';
 
 @Injectable()
 export class BanksService {
 
     constructor(
-        @InjectRepository(Bank)
-        private readonly bankRepository: Repository<Bank>,
+        @InjectRepository(BankEntity)
+        private readonly bankRepository: Repository<BankEntity>,
     ) {}
 
-    async getAll(): Promise<Bank[]> {
-        return await this.bankRepository.find();
+    async getAll(): Promise<BankEntity[]> {
+        return await this.bankRepository.find({
+            relations: {
+                financialProducts: true,
+            }
+        });
     }
 
-    async getById(idBank: number): Promise<Bank> {
-        return await this.bankRepository.findOneBy({id:idBank});
+    async getById(idBank: number): Promise<BankEntity> {
+        return await this.bankRepository.findOne({
+            where: {id: idBank},
+            relations: {
+                financialProducts: true,
+            }
+        });
     }
 
-    async createBank(newBank: CreateBankDto): Promise<Bank> {
-        const newb = new Bank();
+    async createBank(newBank: CreateBankDto): Promise<BankEntity> {
+        const newb = new BankEntity();
         newb.name = newBank.name;
         newb.contact_number = newBank.contact_number;
         newb.branches = newBank.branches;
@@ -30,8 +39,8 @@ export class BanksService {
         return await this.bankRepository.save(newb);
     }
 
-    async updateBank(idBank: number, modifiedBank: CreateBankDto): Promise<Bank> {
-        const bankUpdate: Bank = await this.bankRepository.findOneBy({id:idBank});
+    async updateBank(idBank: number, modifiedBank: CreateBankDto): Promise<BankEntity> {
+        const bankUpdate: BankEntity = await this.bankRepository.findOneBy({id:idBank});
         bankUpdate.name = modifiedBank.name;
         bankUpdate.contact_number = modifiedBank.contact_number;
         bankUpdate.branches = modifiedBank.branches;
@@ -44,9 +53,9 @@ export class BanksService {
         return await this.bankRepository.delete(idBank);
     }
 
-    async createBanks(newBanks: CreateBankDto[]): Promise<Bank[]> {
+    async createBanks(newBanks: CreateBankDto[]): Promise<BankEntity[]> {
         const banksToSave = newBanks.map(newBank => {
-            const bank = new Bank();
+            const bank = new BankEntity();
             bank.name = newBank.name;
             bank.contact_number = newBank.contact_number;
             bank.branches = newBank.branches;
@@ -57,7 +66,7 @@ export class BanksService {
         return await this.bankRepository.save(banksToSave);
     }
     
-    async deleteBanks(): Promise<any> {
+    async deleteAll(): Promise<any> {
         return await this.bankRepository.clear();
     }
     

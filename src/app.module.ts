@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Bank } from './banks/entities/bank.entity';
 import { FinancialProductsModule } from './financial-products/financial-products.module';
 import { BanksModule } from './banks/banks.module';
 
@@ -15,7 +14,6 @@ import { BanksModule } from './banks/banks.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Bank]),
     FinancialProductsModule,
     BanksModule,
   ]

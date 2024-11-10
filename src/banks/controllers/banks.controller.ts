@@ -77,7 +77,7 @@ export class BanksController {
 
     @Delete()
     deleteAll(@Res() response){
-        this.banksService.deleteBanks()
+        this.banksService.deleteAll()
             .then(res => {
                 response.status(HttpStatus.OK).json(res);
             }).catch(() => {
