@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Tarjeta de Crédito MC Clásica",
+        "bank_id": 1,
+        "category_id": 1, 
+        "interest_rate": 2.088,
+        "image_url": "https://www.bancodebogota.com/documents/38440/158544/tarjeta-de-credito-mastercard-clasica.png/0f3abc67-68ec-1bbe-23b1-c25042da0f58?version=2.0&t=1718927187594&download=true",
+        "cashback": 0.05,
+        "benefits": "Durante los primeros 6 meses no pagas cuota de manejo.",
+        "insurances": "Hasta dos eventos al año, tope cobertura de $1.500.000 por evento, no en ciudad de residencia",
+        "requirements": "Fotocopia del documento de identidad ampliado al 150%."
+    },
+    {
+        "name": "Tarjeta de Crédito Visa Platinum",
+        "bank_id": 2,
+        "category_id": 1,
+        "interest_rate": 11.5,
+        "image_url": "https://images.publicidad.davivienda.com/EloquaImages/clients/BANCODAVIVIENDADAVIPRO/%7B5f5a46e1-87c8-46dc-8799-92137fb0acff%7D_visa-platinum.png",
+        "cashback": 0,
+        "benefits": "Hasta el 90% del valor del inmueble.",
+        "insurances": "Seguro de vida y de incendio.",
+        "requirements": "Ingreso mínimo de $2,000,000."
+    },
+    {
+        "name": "Tarjeta de Crédito Visa Aqua",
+        "bank_id": 3,
+        "category_id": 1,  
+        "interest_rate": 15.0,
+        "image_url": "https://www.bbva.com.co/content/dam/public-web/colombia/new-beginning/tarjeta-de-credito-aqua.im1609356019815im.png?imwidth=320",
+        "cashback": 0,
+        "benefits": "Solicitud de tu Tarjeta 100% Digital",
+        "insurances": "Seguro de vida.",
+        "requirements": "Ingreso mínimo de $1,800,000."
+    },
+    {
+        "name": "Tarjeta de crédito Mastercard Coral",
+        "bank_id": 3,
+        "category_id": 1,  
+        "interest_rate": 15.0,
+        "image_url": "https://www.bbva.com.co/content/dam/public-web/colombia/new-beginning/tarjeta-de-credito-mastercard-coral-07.im1720646100842im.png?imwidth=320",
+        "cashback": 0,
+        "benefits": "BBVA aporta el 0,66% de tu facturación mensual para la restauración de corales.",
+        "insurances": "Seguro de vida.",
+        "requirements": "Ingreso mínimo de $1,800,000."
+    }
+]

@@ -69,5 +69,5 @@ export class BanksService {
     async deleteAll(): Promise<any> {
         return await this.bankRepository.clear();
     }
-    
+
 }

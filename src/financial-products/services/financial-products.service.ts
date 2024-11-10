@@ -4,6 +4,7 @@ import { FinancialProductEntity } from '../entities/financial-product.entity';
 import { Repository } from 'typeorm';
 import { BankEntity } from 'src/banks/entities/bank.entity';
 import { CreateFinancialProductDto } from '../dto/create-financial-product-dto';
+import { CategoryEntity } from '../entities/category.entity';
 
 @Injectable()
 export class FinancialProductsService {
@@ -14,12 +15,16 @@ export class FinancialProductsService {
         
         @InjectRepository(BankEntity)
         private readonly bankRepository: Repository<BankEntity>,
+
+        @InjectRepository(CategoryEntity)
+        private readonly catRepository: Repository<CategoryEntity>,
     ) {}
 
     async getAll(): Promise<FinancialProductEntity[]> {
         return await this.financialProductRepository.find({
             relations: {
                 bank: true,
+                category: true,
             }
         });
     }
@@ -29,6 +34,7 @@ export class FinancialProductsService {
             where: { id:idBank },
             relations: {
                 bank: true,
+                category: true,
             }
         });
     }
@@ -41,6 +47,13 @@ export class FinancialProductsService {
             throw new Error('Bank not found in creation of financial product');
         }
 
+        const categoryFound = await this.catRepository.findOne({
+            where: {id: newProduct.category_id}
+        })
+        if(!categoryFound){
+            throw new Error('Category not found in creation of financial product');
+        }
+
         const financialProduct = new FinancialProductEntity();
         financialProduct.name = newProduct.name;
         financialProduct.interest_rate = newProduct.interest_rate;
@@ -50,6 +63,7 @@ export class FinancialProductsService {
         financialProduct.insurances = newProduct.insurances;
         financialProduct.requirements = newProduct.requirements;
         financialProduct.bank = bankFound;
+        financialProduct.category = categoryFound;
         
         return await this.financialProductRepository.save(financialProduct);
     }
@@ -62,6 +76,13 @@ export class FinancialProductsService {
             throw new Error('Bank not found in update of financial product');
         }
 
+        const categoryFound = await this.catRepository.findOne({
+            where: {id: modifiedProduct.category_id}
+        })
+        if(!categoryFound){
+            throw new Error('Category not found in update of financial product');
+        }
+
         const productFound: FinancialProductEntity = await this.financialProductRepository.findOneBy({id:idProduct});
         productFound.name = modifiedProduct.name;
         productFound.interest_rate = modifiedProduct.interest_rate;
@@ -71,6 +92,7 @@ export class FinancialProductsService {
         productFound.insurances = modifiedProduct.insurances;
         productFound.requirements = modifiedProduct.requirements;
         productFound.bank = bankFound;
+        productFound.category = categoryFound;
         
         return await this.financialProductRepository.save(productFound);
     }
@@ -83,17 +105,20 @@ export class FinancialProductsService {
         const productsToSave: FinancialProductEntity[] = [];
     
         for (const newProduct of newProducts) {
-            // Esperar a obtener el banco relacionado
             const bankFound = await this.bankRepository.findOne({
                 where: { id: newProduct.bank_id }
             });
-    
-            // Verificar que el banco existe
             if (!bankFound) {
                 throw new Error('Bank not found in creation of financial products');
             }
+
+            const categoryFound = await this.catRepository.findOne({
+                where: {id: newProduct.category_id}
+            })
+            if(!categoryFound){
+                throw new Error('Category not found in creation of financial products');
+            }
     
-            // Crear y asignar valores al nuevo producto financiero
             const financialProduct = new FinancialProductEntity();
             financialProduct.name = newProduct.name;
             financialProduct.interest_rate = newProduct.interest_rate;
@@ -102,10 +127,9 @@ export class FinancialProductsService {
             financialProduct.benefits = newProduct.benefits;
             financialProduct.insurances = newProduct.insurances;
             financialProduct.requirements = newProduct.requirements;
-
             financialProduct.bank = bankFound;
+            financialProduct.category = categoryFound;
     
-            // Agregar el producto financiero a la lista
             productsToSave.push(financialProduct);
         }
     

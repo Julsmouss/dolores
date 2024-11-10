@@ -1,5 +1,6 @@
 import { BankEntity } from "src/banks/entities/bank.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { CategoryEntity } from "./category.entity";
 
 @Entity({ name: "financial_products" })
 export class FinancialProductEntity {
@@ -31,13 +32,19 @@ export class FinancialProductEntity {
         () => BankEntity,
         (bank: BankEntity) => bank.financialProducts,
     {
-        onDelete: "CASCADE",
+        onDelete: 'CASCADE',
     })
     @JoinColumn({name: 'bank_id'})
     bank: BankEntity;
 
-    /*
-    @Column()
-    category_id: number;
-    */
+    @ManyToOne(
+        () => CategoryEntity,
+        (category: CategoryEntity) => category.financialProducts,
+    {
+        onDelete: 'CASCADE'
+    }
+    )
+    @JoinColumn({name: 'category_id'})
+    category: CategoryEntity;
+    
 }
