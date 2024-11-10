@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Res } from '@nestjs/common';
-import { CreateBankDto } from './dto/create-bank-dto/create-bank-dto';
-import { BanksService } from './banks.service';
+import { CreateBankDto } from '../dto/create-bank-dto';
+import { BanksService } from '../services/banks.service';
 
 @Controller('banks')
 export class BanksController {

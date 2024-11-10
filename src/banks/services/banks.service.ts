@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Bank } from './entities/bank.entity';
-import { CreateBankDto } from './dto/create-bank-dto/create-bank-dto';
+import { Bank } from '../entities/bank.entity';
+import { CreateBankDto } from '../dto/create-bank-dto';
 
 @Injectable()
 export class BanksService {
@@ -27,17 +27,17 @@ export class BanksService {
         newb.branches = newBank.branches;
         newb.link = newBank.link;
         newb.email = newBank.email;
-        return this.bankRepository.save(newb);
+        return await this.bankRepository.save(newb);
     }
 
-    async updateBank(idBank: number, oldBank: CreateBankDto): Promise<Bank> {
+    async updateBank(idBank: number, modifiedBank: CreateBankDto): Promise<Bank> {
         const bankUpdate: Bank = await this.bankRepository.findOneBy({id:idBank});
-        bankUpdate.name = oldBank.name;
-        bankUpdate.contact_number = oldBank.contact_number;
-        bankUpdate.branches = oldBank.branches;
-        bankUpdate.link = oldBank.link;
-        bankUpdate.email = oldBank.email;
-        return this.bankRepository.save(bankUpdate);
+        bankUpdate.name = modifiedBank.name;
+        bankUpdate.contact_number = modifiedBank.contact_number;
+        bankUpdate.branches = modifiedBank.branches;
+        bankUpdate.link = modifiedBank.link;
+        bankUpdate.email = modifiedBank.email;
+        return await this.bankRepository.save(bankUpdate);
     }
 
     async deleteBank(idBank: number): Promise<any> {
@@ -54,11 +54,11 @@ export class BanksService {
             bank.email = newBank.email;
             return bank;
         });
-        return this.bankRepository.save(banksToSave);
+        return await this.bankRepository.save(banksToSave);
     }
     
-    async deleteBanks(): Promise<void> {
-        await this.bankRepository.clear();
+    async deleteBanks(): Promise<any> {
+        return await this.bankRepository.clear();
     }
     
 }

@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { BanksController } from './banks/banks.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BanksService } from './banks/banks.service';
 import { Bank } from './banks/entities/bank.entity';
+import { FinancialProductsModule } from './financial-products/financial-products.module';
+import { BanksModule } from './banks/banks.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -16,8 +16,8 @@ import { Bank } from './banks/entities/bank.entity';
       synchronize: true,
     }),
     TypeOrmModule.forFeature([Bank]),
-  ],
-  controllers: [BanksController],
-  providers: [BanksService],
+    FinancialProductsModule,
+    BanksModule,
+  ]
 })
 export class AppModule {}
