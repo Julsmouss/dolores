@@ -24,14 +24,13 @@
         <form id="filterForm">
             <label for="category">Categoría:</label>
             <select id="category" name="category">
-                <option value="todos">Todos</option>
-                <option value="Crédito">Crédito</option>
-                <option value="Ahorro">Ahorro</option>
+                <option value='all'>Todos</option>
+                <!-- Las opciones de categorias se llenarán dinámicamente con JavaScript -->
             </select>
 
-            <label for="bank">Banco:</label>
-            <select id="bank" name="bank">
-                <option value="todos">Todos los bancos</option>
+            <label for="products-bank">Banco:</label>
+            <select id="products-bank" name="products-bank">
+                <option value='all'>Todos los bancos</option>
                 <!-- Las opciones de bancos se llenarán dinámicamente con JavaScript -->
             </select>
 
@@ -59,23 +58,23 @@
         <button id="compareBtn">Comparar Seleccionados</button> <!-- Botón para iniciar la comparación -->
     </section>
 
-    <!-- Sección de Reportar Fraudes -->
-    <section class="report-fraud">
-        <h2>Reportar Fraudes</h2>
-        <div class="fraud-form">
-            <label for="fraud-bank">Selecciona tu banco para reportar fraude:</label>
-            <select id="fraud-bank" onchange="showBankFraudInfo()">
-                <option value="">-- Selecciona un banco --</option>
+    <!-- Sección de Informacion de Reportes -->
+    <section class="report-info">
+        <h2>Informacion de Reporte por Banco</h2>
+        <div class="report-info-form">
+            <label for="report-info-bank">Selecciona tu banco para reportar fraude:</label>
+            <select id="report-info-bank">
+                <option value='all'>-- Selecciona un banco --</option>
                 <!-- Opciones de bancos se llenarán dinámicamente con JavaScript -->
             </select>
         </div>
 
-        <div id="fraud-info" class="fraud-info">
-            <h3>Información de Contacto</h3>
+        <div id="report-info-item" class="report-info-item">
+            <!-- <h3>Información de Contacto</h3>
             <p id="fraud-contact-number"></p>
             <p id="fraud-branches"></p>
             <p id="fraud-links"></p>
-            <p id="fraud-emails"></p>
+            <p id="fraud-emails"></p> -->
         </div>
     </section>
     
@@ -83,6 +82,7 @@
         <p>&copy; Dolores Dólares</p>
     </footer>
 
-    <script src="script2.js"></script>
+    <script type="module" src="getInfo.js"></script>
+    <script type="module" src="script2.js"></script>
 </body>
 </html>

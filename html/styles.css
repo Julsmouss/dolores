@@ -61,17 +61,17 @@ h2 {
 
 .product-item {
     background-color: #F8E3B8; /* Fondo amarillo suave para productos */
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 15px;
-    width: 400px; /* Ancho fijo para todas las tarjetas */
-    height: 450px; /* Altura fija para todas las tarjetas */
+    width: 40vw; /* Ancho fijo para todas las tarjetas */
+    min-height: 450px; /* Altura fija para todas las tarjetas */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s, background-color 0.2s;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    margin-left: 24px;
+    margin: 10px auto 40px;
 }
 
 .product-item:hover {
@@ -122,10 +122,10 @@ h2 {
 
 .comparison-row {
     background-color: #F8E3B8; /* Fondo amarillo suave */
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 15px;
-    width: 400px; /* Ancho consistente con las tarjetas de productos */
-    height: 450px; /* Altura consistente con las tarjetas de productos */
+    width: 43vw; /* Ancho consistente con las tarjetas de productos */
+    min-height: 450px; /* Altura consistente con las tarjetas de productos */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s, background-color 0.2s;
     display: flex;
@@ -133,6 +133,7 @@ h2 {
     align-items: center;
     justify-content: space-between;
     color: #4A4E69;
+    margin: 10px auto 40px;
 }
 
 .comparison-row:hover {
@@ -190,7 +191,7 @@ button:hover {
     background-color: #E68A00; /* Hover en naranja oscuro */
 }
 /* Reportar Fraudes */
-.report-fraud {
+.report-info {
     background-color: #FFFFFF;
     padding: 30px;
     margin: 20px;
@@ -201,13 +202,13 @@ button:hover {
     align-items: center;
 }
 
-.report-fraud h2 {
+.report-info h2 {
     font-size: 1.8em;
     color: #4A4E69;
     margin-bottom: 20px;
 }
 
-.fraud-form {
+.report-info-form {
     width: 100%;
     max-width: 500px;
     display: flex;
@@ -216,13 +217,13 @@ button:hover {
     gap: 10px;
 }
 
-.fraud-form label {
+.report-info-form label {
     font-weight: 600;
     color: #4A4E69;
     font-size: 1.1em;
 }
 
-.fraud-form select {
+.report-info-form select {
     width: 100%;
     padding: 12px;
     border: 1px solid #CCCCCC;
@@ -232,34 +233,33 @@ button:hover {
     transition: border 0.3s;
 }
 
-.fraud-form select:hover {
+.report-info-form select:hover {
     border: 1px solid #FF9A00;
 }
 
-.fraud-info {
-    width: 100%;
-    max-width: 500px;
+.report-info-item {
+    width: 95vw;
     margin-top: 20px;
     padding: 15px;
     background-color: #F8E3B8;
-    border-radius: 8px;
+    border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: none;
 }
 
-.fraud-info h3 {
+.report-info-item h3 {
     font-size: 1.5em;
     color: #4A4E69;
     margin-bottom: 10px;
 }
 
-.fraud-info p {
+.report-info-item p {
     margin: 5px 0;
     font-size: 1em;
     color: #333333;
 }
 
-.fraud-form button {
+.report-info-form button {
     background-color: #FF9A00;
     color: #FFFFFF;
     border: none;
@@ -272,6 +272,6 @@ button:hover {
     margin-top: 10px;
 }
 
-.fraud-form button:hover {
+.report-info-form button:hover {
     background-color: #E68A00;
 }
