@@ -28,7 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     const selectedProducts = []; // Array para guardar los productos a comparar
     const selectedProductsId = []; // Array para guardar los productos a comparar
-
+    const decimalAmount = 2;
+    let isComparatingCredit = false;
     /**
      * Funciones de Componentes
      */
@@ -51,11 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 <h3>${product.name}</h3>
                 <p><strong>Banco:</strong> ${product.bank.name}</p>
                 <p><strong>Categoría:</strong> ${product.category.name}</p>
-                <p><strong>Tasa de Interés:</strong> ${product.interest_rate}%</p>
+                <p><strong>Tasa de Interés:</strong> ${parseFloat(product.interest_rate).toFixed(decimalAmount)}%</p>
                 <p><strong>Beneficios:</strong> ${product.benefits}</p>
                 <p><strong>Requisitos:</strong> ${product.requirements}</p>
                 <p><strong>Seguros:</strong> ${product.insurances}</p>
-                <p><strong>Cashback:</strong> ${product.cashback}</p>
+                <p><strong>Cashback:</strong> ${parseFloat(product.cashback).toFixed(decimalAmount)}%</p>
                 <button class='compare-btn' id-product='${product.id}'>Comparar</button>`;
             productList.appendChild(productItem);
         });
@@ -109,11 +110,23 @@ document.addEventListener("DOMContentLoaded", () => {
             const bankSelected = await getBankById(bankInfoRepSelect.value);
             reportInfoItem.innerHTML = 
             `<h3>Información de Contacto</h3>
-            <p id="bankInfoRep-name">${bankSelected.name}</p>
-            <p id="bankInfoRep-contact-number">${bankSelected.contact_number}</p>
-            <p id="bankInfoRep-branches">${bankSelected.branches}</p>
-            <p id="bankInfoRep-link">${bankSelected.link}</p>
-            <p id="bankInfoRep-email">${bankSelected.email}</p>`;
+            <img src='${bankSelected.image_url}' alt='${bankSelected.name}' class='product-image'>
+            <p id="bankInfoRep-name">
+                <strong>Banco:</strong>
+                ${bankSelected.name}</p>
+            <p id="bankInfoRep-contact-number">
+                <strong>Numero de contacto:</strong>
+                ${bankSelected.contact_number}</p>
+            <p id="bankInfoRep-branches">
+                <strong>Sucursales:</strong>
+                ${bankSelected.branches}</p>
+            <p id="bankInfoRep-link">
+                <strong>Link:</strong>
+                <a href="${bankSelected.link}" target="_blank">${bankSelected.link}</a>
+                </p>
+            <p id="bankInfoRep-email">
+                <strong>Email:</strong>
+                ${bankSelected.email}</p>`;
             reportInfoItem.style.display = 'block';
         }
     }
@@ -155,6 +168,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
                 const product = await getFinancialProductById(id);
+                if(selectedProductsId.length == 0) {
+                    isComparatingCredit = (product.category.id == 1) ? true : false;
+                } else if((isComparatingCredit && product.category.id == 2) || (!isComparatingCredit && product.category.id == 1)){
+                    alert('Solo puedes comparar productos de la misma categoria.');
+                    return;
+                }
                 selectedProductsId.push(id);
                 selectedProducts.push(product);
                 e.target.textContent = 'Dejar de comparar';
@@ -172,28 +191,56 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     compareBtn.addEventListener('click', () => {
         comparisonTable.innerHTML = '';
-        if(selectedProductsId.length == 0){
-            comparisonTable.innerHTML = '<p>No hay productos seleccionados para comparar.</p>';
+        if(selectedProductsId.length < 2){
+            comparisonTable.innerHTML = '<p>No hay 2 productos seleccionados para comparar.</p>';
             return;
         }
-
+        const idLowerIntRate = (
+            selectedProducts[0].interest_rate < selectedProducts[1].interest_rate
+            ? selectedProducts[0].id
+            : (
+                selectedProducts[0].interest_rate > selectedProducts[1].interest_rate
+                ? selectedProducts[1].id
+                : -1
+            )
+        );
+        const idHigherCashback = (
+            selectedProducts[0].cashback > selectedProducts[1].cashback
+            ? selectedProducts[0].id
+            : (
+                selectedProducts[0].cashback < selectedProducts[1].cashback
+                ? selectedProducts[1].id
+                : -1
+            )
+        );
         selectedProducts.forEach((product) => {
             const row = document.createElement('div');
             row.className = 'comparison-row';
             row.innerHTML = 
-                `<div class='comparison-image'>
-                    <img src='${product.image_url}' alt='${product.name}' class='comparison-product-image'>
-                </div>
-                <div class='comparison-details'>
-                    <h3>${product.name}</h3>
-                    <p><strong>Banco:</strong> ${product.bank.name}</p>
-                    <p><strong>Categoría:</strong> ${product.category.name}</p>
-                    <p><strong>Tasa de Interés:</strong> ${product.interest_rate}%</p>
-                    <p><strong>Beneficios:</strong> ${product.benefits}</p>
-                    <p><strong>Requisitos:</strong> ${product.requirements}</p>
-                    <p><strong>Seguros:</strong> ${product.insurances}</p>
-                    <p><strong>Cashback:</strong> ${product.cashback}</p>
-                </div>`;
+                `
+                <img src='${product.image_url}' alt='${product.name}' class='product-image'>
+                <h3>${product.name}</h3>
+                <p><strong>Banco:</strong> ${product.bank.name}</p>
+                <p><strong>Categoría:</strong> ${product.category.name}</p>
+                <p><strong>Tasa de Interés:</strong> 
+                    <span style="color: ${
+                        idLowerIntRate === -1 
+                        ? 'inherit'
+                        : (product.id === idLowerIntRate ? 'green' : 'red')};
+                        font-weight: bold;">
+                    ${parseFloat(product.interest_rate).toFixed(decimalAmount)}%
+                </p>
+                <p><strong>Beneficios:</strong> ${product.benefits}</p>
+                <p><strong>Requisitos:</strong> ${product.requirements}</p>
+                <p><strong>Seguros:</strong> ${product.insurances}</p>
+                <p><strong>Cashback:</strong> 
+                    <span style="color: ${
+                        idHigherCashback === -1 
+                        ? 'inherit'
+                        : (product.id === idHigherCashback ? 'green' : 'inherit')};
+                        font-weight: bold;">
+                    ${parseFloat(product.cashback).toFixed(decimalAmount)}%
+                </p>`;
             comparisonTable.appendChild(row);
         });
     })

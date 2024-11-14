@@ -10,13 +10,13 @@ export class FinancialProductEntity {
     @Column()
     name: string;
 
-    @Column()
+    @Column("decimal", { precision: 8, scale: 4 })
     interest_rate: number;
 
     @Column()
     image_url: string;
 
-    @Column()
+    @Column("decimal", { precision: 8, scale: 4 })
     cashback: number;
 
     @Column("text")

@@ -21,6 +21,9 @@ export class BankEntity {
 
     @Column()
     email: string;
+    
+    @Column()
+    image_url: string;
 
     @OneToMany(
         () => FinancialProductEntity,

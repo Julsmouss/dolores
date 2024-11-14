@@ -9,6 +9,8 @@ import { CategoryEntity } from '../entities/category.entity';
 @Injectable()
 export class FinancialProductsService {
 
+    private readonly default_image = 'https://w7.pngwing.com/pngs/495/14/png-transparent-computer-icons-credit-card-icon-design-credit-card-angle-text-rectangle.png';
+
     constructor(
         @InjectRepository(FinancialProductEntity)
         private readonly financialProductRepository: Repository<FinancialProductEntity>,
@@ -58,6 +60,9 @@ export class FinancialProductsService {
         financialProduct.name = newProduct.name;
         financialProduct.interest_rate = newProduct.interest_rate;
         financialProduct.image_url = newProduct.image_url;
+        if(newProduct.image_url.length==0){
+            financialProduct.image_url = this.default_image;
+        }
         financialProduct.cashback = newProduct.cashback;
         financialProduct.benefits = newProduct.benefits;
         financialProduct.insurances = newProduct.insurances;
@@ -87,6 +92,9 @@ export class FinancialProductsService {
         productFound.name = modifiedProduct.name;
         productFound.interest_rate = modifiedProduct.interest_rate;
         productFound.image_url = modifiedProduct.image_url;
+        if(modifiedProduct.image_url.length==0){
+            productFound.image_url = this.default_image;
+        }
         productFound.cashback = modifiedProduct.cashback;
         productFound.benefits = modifiedProduct.benefits;
         productFound.insurances = modifiedProduct.insurances;
@@ -123,6 +131,9 @@ export class FinancialProductsService {
             financialProduct.name = newProduct.name;
             financialProduct.interest_rate = newProduct.interest_rate;
             financialProduct.image_url = newProduct.image_url;
+            if(newProduct.image_url.length==0){
+                financialProduct.image_url = this.default_image;
+            }
             financialProduct.cashback = newProduct.cashback;
             financialProduct.benefits = newProduct.benefits;
             financialProduct.insurances = newProduct.insurances;

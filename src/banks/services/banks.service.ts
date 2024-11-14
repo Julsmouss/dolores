@@ -36,6 +36,7 @@ export class BanksService {
         newb.branches = newBank.branches;
         newb.link = newBank.link;
         newb.email = newBank.email;
+        newb.image_url = newBank.image_url;
         return await this.bankRepository.save(newb);
     }
 
@@ -46,6 +47,7 @@ export class BanksService {
         bankUpdate.branches = modifiedBank.branches;
         bankUpdate.link = modifiedBank.link;
         bankUpdate.email = modifiedBank.email;
+        bankUpdate.image_url = modifiedBank.image_url;
         return await this.bankRepository.save(bankUpdate);
     }
 
@@ -61,6 +63,7 @@ export class BanksService {
             bank.branches = newBank.branches;
             bank.link = newBank.link;
             bank.email = newBank.email;
+            bank.image_url = newBank.image_url;
             return bank;
         });
         return await this.bankRepository.save(banksToSave);
