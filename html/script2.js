@@ -226,7 +226,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     <span style="color: ${
                         idLowerIntRate === -1 
                         ? 'inherit'
-                        : (product.id === idLowerIntRate ? 'green' : 'red')};
+                        : (isComparatingCredit 
+                            ? ((product.id === idLowerIntRate) ? 'green' : 'red')
+                            : ((product.id === idLowerIntRate) ? 'red' : 'green'))};
                         font-weight: bold;">
                     ${parseFloat(product.interest_rate).toFixed(decimalAmount)}%
                 </p>
