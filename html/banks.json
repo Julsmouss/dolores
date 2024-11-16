@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Banco de bogota",
+        "image_url": "https://www.bancodebogota.com/documents/38440/2713321/Banco+de+Bogota%CC%81.svg/ae6fe9a9-fdc2-c13a-7404-9d3b62424d7e?t=1658163297427",
+        "contact_number": "Bogotá 601 382 00 00 Nivel Nacional :01 8000 518 877",
+        "branches": "EDS BIOMAX PRIMAVERA I KR 69 R 75-65 Sucursal 2",
+        "link": "https://www.bancodebogota.com/atencion-al-cliente/servilineas",
+        "email": "NA"
+    },
+    {
+        "name": "Davivienda",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Davivienda_Logo.png",
+        "contact_number": "338-3838 en Bogotá",
+        "branches": "Carrera 7 # 71 – 52 Torre B Piso 16",
+        "link": " www.davivienda.com ",
+        "email": "Na"
+    },
+    {
+        "name": "BBVA",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/BBVA_2019.svg/185px-BBVA_2019.svg.png",
+        "contact_number": "Línea BBVA 01 8000 912 227",
+        "branches": "850.0 metros · Ak 68 # 66 - 62",
+        "link": " https://vdp.bbva.com/p/Bienvenido",
+        "email": "Na"
+    },
+    {
+        "name": "Scotiabank Colpatria",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReipl8rGrNMG0G0xRVFIYY2fO4gifcqd82rA&s",
+        "contact_number": "atención al cliente al 01 8000 93 2933",
+        "branches": "850.0 metros · Ak 68 # 66 - 62",
+        "link": "https://www.scotiabankcolpatria.com/personas/seguros/fraude",
+        "email": "incidentesseguridad@colpatria.com"
+    }
+]

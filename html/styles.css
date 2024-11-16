@@ -2,17 +2,33 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #001a57;
+    --primary-color-hover: #424242;
+    --primary-color-light-hover: #2a4481;
+    --secondary-color: #82898f;
+    /* griss: dcd6eb */
+    --font-color-normal: #424242;
+    --font-color-light: #ffffff;
+}
+
+
 body {
-    font-family: 'Montserrat', sans-serif; /* Cambiada a una fuente juvenil */
+    /* Cambiada a una fuente juvenil */
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #F8E3B8; /* Fondo amarillo suave */
-    color: #4A4E69; /* Texto gris oscuro */
+    /* Fondo amarillo suave */
+    background-color: var(--secondary-color);
+    /* Texto gris oscuro */
+    color: var(--font-color-normal);
 }
 
 header {
-    background-color: #FF9A00; /* Naranja brillante para el fondo */
-    color: #FFFFFF; /* Texto blanco */
+    /* Naranja brillante para el fondo */
+    background-color: var(--primary-color);
+    /* Texto blanco */
+    color: var(--font-color-light);
     padding: 20px 0;
     text-align: center;
     position: relative;
@@ -32,15 +48,20 @@ header {
 }
 
 .filters {
-    background-color: #FFFFFF; /* Fondo blanco para los filtros */
+    /* Fondo blanco para los filtros */
+    background-color: var(--font-color-light);
     padding: 20px;
     margin: 20px;
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    /* Bordes redondeados */
+    border-radius: 10px;
+    /* Sombra suave */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.products, .comparison {
-    background-color: #FFFFFF; /* Fondo blanco para productos y comparaciones */
+.products,
+.comparison {
+    /* Fondo blanco para productos y comparaciones */
+    background-color: var(--font-color-light);
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
@@ -48,9 +69,11 @@ header {
 }
 
 h2 {
-    border-bottom: 3px solid #9A8BFF; /* Línea lavanda bajo títulos */
+    /* Línea lavanda bajo títulos */
+    border-bottom: 3px solid #9A8BFF;
     padding-bottom: 10px;
-    color: #4A4E69; /* Texto gris oscuro */
+    /* Texto gris oscuro */
+    color: var(--font-color-normal);
 }
 
 .product-list {
@@ -60,29 +83,46 @@ h2 {
 }
 
 .product-item {
-    background-color: #F8E3B8; /* Fondo amarillo suave para productos */
-    border-radius: 10px;
+    /* Fondo amarillo suave para productos */
+    background-color: var(--secondary-color);
+    border-radius: 15px;
     padding: 15px;
-    width: calc(33.33% - 20px);
+    /* Ancho fijo para todas las tarjetas */
+    width: 40vw;
+    /* Altura fija para todas las tarjetas */
+    min-height: 450px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s, background-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px auto 40px;
 }
 
 .product-item:hover {
-    transform: scale(1.05); /* Mayor crecimiento al hacer hover */
-    background-color: #FF9A00; /* Cambia el fondo a naranja en hover */
-    color: #FFFFFF; /* Texto blanco en hover */
+    /* Mayor crecimiento al hacer hover */
+    transform: scale(1.05);
+    /* Cambia el fondo a naranja en hover */
+    background-color: var(--primary-color-light-hover);
+    /* Texto blanco en hover */
+    color: var(--font-color-light);
 }
 
 .product-image {
     max-width: 100%;
     border-radius: 5px;
+    /* Tamaño fijo para la imagen */
+    height: 150px;
+    object-fit: cover;
 }
+
 
 .product-item h3 {
     font-size: 1.2em;
     margin: 10px 0;
-    color: #4A4E69; /* Texto gris oscuro */
+    /* Texto gris oscuro */
+    color: var(--font-color-light);
 }
 
 .product-item p {
@@ -90,8 +130,10 @@ h2 {
 }
 
 .compare-btn {
-    background-color: #FF9A00; /* Botón naranja brillante */
-    color: #FFFFFF; /* Texto blanco en el botón */
+    /* Botón naranja brillante */
+    background-color: var(--primary-color);
+    /* Texto blanco en el botón */
+    color: var(--font-color-light);
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -100,26 +142,72 @@ h2 {
 }
 
 .compare-btn:hover {
-    background-color: #E68A00; /* Hover en un naranja más oscuro */
+    /* Hover en un naranja más oscuro */
+    background-color: var(--primary-color-hover);
 }
 
 .comparison-table {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
 }
 
 .comparison-row {
-    background-color: #F8E3B8; /* Fondo amarillo suave */
-    border-radius: 10px;
+    /* Fondo amarillo suave */
+    background-color: var(--secondary-color);
+    border-radius: 15px;
     padding: 15px;
+    /* Ancho consistente con las tarjetas de productos */
+    width: 43vw;
+    /* Altura consistente con las tarjetas de productos */
+    min-height: 450px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, background-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--font-color-normal);
+    margin: 10px auto 40px;
+}
+
+.comparison-row:hover {
+    transform: scale(1.05);
+    /* Cambia a naranja en hover */
+    background-color: var(--primary-color-light-hover);
+    /* Texto blanco en hover */
+    color: var(--font-color-light);
+}
+
+/* Imagen de Producto en Comparación */
+.comparison-row img {
+    max-width: 100%;
+    border-radius: 5px;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Títulos y Texto en Comparación */
+.comparison-row h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    /* Mantiene el color actual */
+    color: inherit;
+}
+
+.comparison-row p {
+    margin: 5px 0;
 }
 
 footer {
     text-align: center;
     padding: 20px 0;
-    background-color: #4A4E69; /* Fondo gris oscuro */
-    color: #FFFFFF; /* Texto blanco */
+    /* Fondo gris oscuro */
+    background-color: var(--font-color-normal);
+    /* Texto blanco */
+    color: var(--font-color-light);
 }
 
 .filters select,
@@ -134,8 +222,10 @@ footer {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #FF9A00; /* Fondo naranja para los botones */
-    color: #FFFFFF; /* Texto blanco */
+    background-color: var(--primary-color);
+    /* Fondo naranja para los botones */
+    color: var(--font-color-light);
+    /* Texto blanco */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -143,5 +233,90 @@ button {
 }
 
 button:hover {
-    background-color: #E68A00; /* Hover en naranja oscuro */
+    background-color: var(--primary-color-hover);
+    /* Hover en naranja oscuro */
+}
+
+/* Reportar Fraudes */
+.report-info {
+    background-color: var(--font-color-light);
+    padding: 30px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.report-info h2 {
+    font-size: 1.8em;
+    color: var(--font-color-normal);
+    margin-bottom: 20px;
+}
+
+.report-info-form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.report-info-form label {
+    font-weight: 600;
+    color: var(--font-color-normal);
+    font-size: 1.1em;
+}
+
+.report-info-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: var(--secondary-color);
+    transition: border 0.3s;
+}
+
+.report-info-form select:hover {
+    border: 1px solid var(--primary-color-light-hover);
+}
+
+.report-info-item {
+    width: 85vw;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    font-size: 1.5em;
+    color: var(--font-color-normal);
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.report-info-item p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: var(--font-color-normal);
+}
+
+.report-info-form button {
+    background-color: var(--primary-color);
+    color: var(--font-color-light);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.report-info-form button:hover {
+    background-color: var(--primary-color-hover);
 }
