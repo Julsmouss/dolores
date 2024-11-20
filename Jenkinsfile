@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Deploy') {
             steps{
-                sh '${DOCKER_PATH} build -t docker-pipeline:latest '
+                bat "\"${DOCKER_PATH}\" build -t docker-pipeline:latest ."
             }
         }
     }
