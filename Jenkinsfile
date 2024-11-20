@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_PATH = 'C:\Program Files\Docker\Docker\resources\bin\docker'
+    }
+
     stages {
         stage('Build') {
             steps{
@@ -19,7 +23,7 @@ pipeline {
         }
         stage('Deploy') {
             steps{
-                sh 'docker-compose up -d'
+                sh '${DOCKER_PATH} build -t docker-pipeline:latest '
             }
         }
     }
